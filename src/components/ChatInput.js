@@ -7,11 +7,19 @@ function ChatInput({onSendMessage, isLoading}) {
         setInputText(event.target.value);
     };
     
-    // Handle Enter key press to send message
+    // Handle keydown events for message input
     const handleKeyDown = (event) => {
-        if (event.key === "Enter" && !isLoading) {
-        event.preventDefault();
-        handleSendMessage();
+        // Check if Enter key was pressed
+        if (event.key === "Enter") {
+            // If Shift+Enter, allow default behavior (new line)
+            if (event.shiftKey) {
+                return; // Do nothing, let textarea add a new line naturally
+            } 
+            // If just Enter without Shift and not loading, send the message
+            else if (!isLoading) {
+                event.preventDefault(); // Prevent default to avoid adding a new line
+                handleSendMessage();
+            }
         }
     };
     
