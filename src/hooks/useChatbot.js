@@ -1,7 +1,15 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 function useChatbot() {
   const [isLoading, setIsLoading] = useState(false);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    const shouldFocus =  !isLoading && inputRef.current;
+    if (shouldFocus) {
+      inputRef.current.focus();
+    }
+  }, [isLoading]);
 
   // This is where you would connect to your backend API
   const sendMessage = async (message) => {
@@ -29,7 +37,7 @@ function useChatbot() {
     }
   };
 
-  return { sendMessage, isLoading };
+  return { sendMessage, isLoading, inputRef };
 }
 
 // Helper function to simulate responses

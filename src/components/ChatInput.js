@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ChatInput({onSendMessage, isLoading}) {
+function ChatInput({onSendMessage, isLoading, inputRef}) {
     const [inputText, setInputText] = useState("");
     
     const handleInputChange = (event) => {
@@ -33,6 +33,7 @@ function ChatInput({onSendMessage, isLoading}) {
     return (
         <div className="chat-input">
         <textarea
+            ref={inputRef}
             value={inputText}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}

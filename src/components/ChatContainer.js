@@ -7,7 +7,7 @@ function ChatContainer() {
     const [messages, setMessages] = useState([
       { id: 1, text: "Hello! How can I help you today?", sender: "bot" }
     ]);
-    const { sendMessage, isLoading } = useChatbot();
+    const { sendMessage, isLoading, inputRef } = useChatbot();
   
     const handleSendMessage = async (text) => {
       if (!text.trim()) return;
@@ -39,7 +39,7 @@ function ChatContainer() {
         </div>
         
         <MessageList messages={messages} />
-        <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
+        <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} inputRef={inputRef} />
       </div>
     );
   }
