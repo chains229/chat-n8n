@@ -5,7 +5,7 @@ import useChatbot from '../hooks/useChatbot';
 
 function ChatContainer() {
     const [messages, setMessages] = useState([
-      { id: 1, text: "Hello! How can I help you today?", sender: "bot" }
+      { id: 1, text: "Hello! I am NoFruit chatbot. I am here to guide you through our Selection Aid. How can I help you today?", sender: "bot" }
     ]);
     const { sendMessage, isLoading, inputRef } = useChatbot();
   
@@ -35,7 +35,7 @@ function ChatContainer() {
     return (
       <div className="chat-container">
         <div>
-          <h1>Chatbot</h1>
+          <h1>NoFruit Chatbot</h1>
         </div>
         
         <MessageList messages={messages} />
