@@ -306,3 +306,89 @@ body {
     transform: scale(1);
   }
 }
+
+/* Example CSS for options */
+.message.bot .options-container {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap to next line if too many */
+  gap: 8px; /* Spacing between buttons */
+}
+
+.message.bot .options-container button {
+  padding: 8px 15px;
+  font-size: 0.9em;
+  color: #333;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 15px; /* Rounded buttons */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.message.bot .options-container button:hover:not(:disabled) {
+  background-color: #e0e0e0;
+  border-color: #bbb;
+}
+
+.message.bot .options-container button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background-color: #f0f0f0; /* Keep background same when disabled but less opaque */
+}
+
+/* In your main CSS file (e.g., App.css or Chat.css) */
+
+/* ... (your existing .message.bot .options-container styles) ... */
+
+.message.bot .option-button { /* Styles for the button containing image and text */
+  display: flex; /* Align image and text horizontally */
+  align-items: center; /* Vertically center image and text */
+  gap: 8px; /* Space between image and text */
+  text-align: left; /* Ensure text aligns left if it wraps */
+  /* Keep existing padding, border, etc., or adjust as needed */
+  padding: 8px 12px; /* Adjust padding if necessary */
+}
+
+.message.bot .option-image {
+  width: 40px;   /* Adjust as needed */
+  height: 40px;  /* Adjust as needed */
+  object-fit: cover; /* Scales the image to maintain aspect ratio while filling dimensions */
+  border-radius: 4px; /* Optional: rounded corners for the image */
+  flex-shrink: 0; /* Prevent image from shrinking if button text is long */
+}
+
+.message.bot .option-title {
+  flex-grow: 1; /* Allow text to take remaining space */
+}
+
+/* Ensure buttons still wrap if there are many */
+.message.bot .options-container {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Increased gap to accommodate slightly larger buttons */
+}
+
+/* Adjust the original button styling if it conflicts */
+.message.bot .options-container button { /* This is the .option-button now */
+  /* padding: 8px 15px; remove or adjust if using .option-button padding */
+  font-size: 0.9em;
+  color: #333;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  /* display: flex; align-items: center; gap: 8px; moved to .option-button */
+}
+
+.message.bot .options-container button:hover:not(:disabled) {
+  background-color: #e0e0e0;
+  border-color: #bbb;
+}
+
+.message.bot .options-container button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

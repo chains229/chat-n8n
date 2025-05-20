@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Splitter = () => {
+export const Splitter = (Left, Right) => {
     const containerRef = React.useRef();
     const firstHalfRef = React.useRef();
     const secondHalfRef = React.useRef();
@@ -107,18 +107,21 @@ export const Splitter = () => {
     };
 
     return (
+        
         <div className="splitter" ref={containerRef}>
             <div className="splitter__first" ref={firstHalfRef}>
-                Left
+                {Left}
             </div>
-            <div
-                className="splitter__resizer"
-                ref={resizerRef}
-                onMouseDown={handleMouseDown}
-                onTouchStart={handleTouchStart}
-            />
+
+        <div
+            className="splitter__resizer"
+            ref={resizerRef}
+            onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
+        />
+            
             <div className="splitter__second" ref={secondHalfRef}>
-                Right
+                {Right}
             </div>
         </div>
     );
