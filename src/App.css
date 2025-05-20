@@ -339,56 +339,61 @@ body {
 
 /* In your main CSS file (e.g., App.css or Chat.css) */
 
-/* ... (your existing .message.bot .options-container styles) ... */
-
-.message.bot .option-button { /* Styles for the button containing image and text */
-  display: flex; /* Align image and text horizontally */
-  align-items: center; /* Vertically center image and text */
-  gap: 8px; /* Space between image and text */
-  text-align: left; /* Ensure text aligns left if it wraps */
-  /* Keep existing padding, border, etc., or adjust as needed */
-  padding: 8px 12px; /* Adjust padding if necessary */
-}
-
-.message.bot .option-image {
-  width: 40px;   /* Adjust as needed */
-  height: 40px;  /* Adjust as needed */
-  object-fit: cover; /* Scales the image to maintain aspect ratio while filling dimensions */
-  border-radius: 4px; /* Optional: rounded corners for the image */
-  flex-shrink: 0; /* Prevent image from shrinking if button text is long */
-}
-
-.message.bot .option-title {
-  flex-grow: 1; /* Allow text to take remaining space */
-}
-
-/* Ensure buttons still wrap if there are many */
+/* Container for all option buttons */
 .message.bot .options-container {
-  margin-top: 10px;
+  margin-top: 15px; /* Slightly more space above options */
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Increased gap to accommodate slightly larger buttons */
+  flex-wrap: wrap; /* Allow buttons to wrap */
+  gap: 15px;       /* Space between option buttons */
+  justify-content: flex-start; /* Align items to the start, or use 'center' if preferred */
 }
 
-/* Adjust the original button styling if it conflicts */
-.message.bot .options-container button { /* This is the .option-button now */
-  /* padding: 8px 15px; remove or adjust if using .option-button padding */
-  font-size: 0.9em;
-  color: #333;
+/* Individual option button styling */
+.message.bot .option-button {
+  display: flex;
+  flex-direction: column; /* Stack image and title vertically */
+  align-items: center;    /* Center items horizontally within the button */
+  justify-content: center; /* Center items vertically (useful if button has fixed height) */
+  
   background-color: #f0f0f0;
   border: 1px solid #ccc;
-  border-radius: 15px;
+  border-radius: 8px;    /* Slightly less rounded for a card-like feel */
+  padding: 10px;         /* Padding around the content within the button */
+  
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  /* display: flex; align-items: center; gap: 8px; moved to .option-button */
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  text-align: center;    /* Center the text (title) */
+  width: 120px;          /* Give a fixed width to each option button, adjust as needed */
+  min-height: 150px;     /* Minimum height to accommodate image and text */
+  box-sizing: border-box; /* Ensure padding and border are included in width/height */
 }
 
-.message.bot .options-container button:hover:not(:disabled) {
+.message.bot .option-button:hover:not(:disabled) {
   background-color: #e0e0e0;
   border-color: #bbb;
+  transform: translateY(-2px); /* Slight lift on hover */
 }
 
-.message.bot .options-container button:disabled {
+.message.bot .option-button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
+  background-color: #f0f0f0;
+}
+
+/* Styling for the image within the option button */
+.message.bot .option-image {
+  width: 80px;    /* Increased image width */
+  height: 80px;   /* Increased image height */
+  object-fit: cover;
+  border-radius: 6px; /* Rounded corners for the image */
+  margin-bottom: 8px; /* Space between the image and the title */
+  flex-shrink: 0;
+}
+
+/* Styling for the title text within the option button */
+.message.bot .option-title {
+  font-size: 0.9em;
+  color: #333;
+  line-height: 1.2; /* Adjust line height for better readability if text wraps */
+  /* flex-grow: 1; /* No longer needed as much with column direction, but can help fill space */
 }
