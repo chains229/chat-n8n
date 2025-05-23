@@ -4,11 +4,6 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
-// You can add/update styling for the options in your CSS file
-// For example:
-// .options-container button { display: flex; align-items: center; gap: 8px; /* For image and text */ }
-// .options-container button img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; }
-
 function ChatMessage({ message, onOptionClick, isLoading, areOptionsActive }) {
   const { sender, text, options } = message;
   const messageClass = sender === 'user' ? 'user' : 'bot';
@@ -35,12 +30,20 @@ function ChatMessage({ message, onOptionClick, isLoading, areOptionsActive }) {
                   disabled={isLoading || !areOptionsActive}
                   className="option-button" // Add a class for easier styling
                 >
-                  {/* Mock Image - replace with option.imageUrl if available */}
+                  { !option.filePath && ( // In case no filepath
                   <img
-                    src={`https://th.bing.com/th/id/OIP.m5qsck3Bp2oZzi5MoZtz_AHaEa?w=277&h=180&c=7&r=0&o=7&cb=iwp2&pid=1.7&rm=3?text=${encodeURIComponent(option.title.substring(0,1))}`} // Placeholder image with first letter
+                    src={`https://www.maatkussens.nl/assets/icons/apple-touch-icon.png?w=277&h=180&c=7&r=0&o=7&cb=iwp2&pid=1.7&rm=3?text=${encodeURIComponent(option.title.substring(0,1))}`} // Placeholder image with first letter
                     alt={option.title}
                     className="option-image" // Add a class for easier styling
-                  />
+                  />)}
+
+                  { option.filePath && (
+                  <img
+                    src={`http://maatkussens.acc2017.nofruit.nl/thumbnails/${option.filePath}?w=277&h=180&c=7&r=0&o=7&cb=iwp2&pid=1.7&rm=3?text=${encodeURIComponent(option.title.substring(0,1))}`} // Placeholder image with first letter
+                    alt={option.title}
+                    className="option-image" // Add a class for easier styling
+                  />)}
+
                   <span className="option-title">{option.title}</span>
                 </button>
               ))}

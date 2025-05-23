@@ -34,14 +34,9 @@ function useChatbot() {
       });
       const data = await response.json();
 
-      // Assuming the backend response structure is an array with one item: [ { "output": { ... } } ]
-      if (data && Array.isArray(data) && data.length > 0 && data[0].output) {
+      if (data && data.output) { // Fallback for a direct object response
         return {
-          text: data[0].output.message,
-          options: data[0].output.options || [] // Ensure options is an array
-        };
-      } else if (data && data.output) { // Fallback for a direct object response
-        return {
+          is_finished: data.output.is_finished || false,
           text: data.output.message,
           options: data.output.options || []
         };
@@ -59,7 +54,6 @@ function useChatbot() {
     }
   };
 
-  // handleOptionClick is removed from here as ChatContainer will manage the logic
   return { sendMessage, isLoading, inputRef };
 }
 

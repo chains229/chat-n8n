@@ -1,4 +1,4 @@
-/* App.css - Comprehensive styling for React Chatbot */
+/* App.css */
 
 /* Global styles and variables */
 :root {
@@ -35,8 +35,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 1rem;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  padding: 0;
 }
 
 /* Chat container */
@@ -44,13 +45,13 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 600px;
-  height: 80vh;
-  max-height: 800px;
+  max-width: none;
+  height: 100%;
+  max-height: none;
   background-color: #ffffff;
-  border-radius: var(--border-radius);
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  box-shadow: none;
 }
 
 /* Header */
@@ -363,8 +364,8 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
   text-align: center;    /* Center the text (title) */
-  width: 120px;          /* Give a fixed width to each option button, adjust as needed */
-  min-height: 150px;     /* Minimum height to accommodate image and text */
+  width: 150px;          /* Give a fixed width to each option button, adjust as needed */
+  min-height: 180px;     /* Minimum height to accommodate image and text */
   box-sizing: border-box; /* Ensure padding and border are included in width/height */
 }
 
@@ -382,8 +383,8 @@ body {
 
 /* Styling for the image within the option button */
 .message.bot .option-image {
-  width: 80px;    /* Increased image width */
-  height: 80px;   /* Increased image height */
+  width: 120px;    /* Increased image width */
+  height: 120px;   /* Increased image height */
   object-fit: cover;
   border-radius: 6px; /* Rounded corners for the image */
   margin-bottom: 8px; /* Space between the image and the title */
@@ -392,7 +393,7 @@ body {
 
 /* Styling for the title text within the option button */
 .message.bot .option-title {
-  font-size: 0.9em;
+  font-size: 1em;
   color: #333;
   line-height: 1.2; /* Adjust line height for better readability if text wraps */
   /* flex-grow: 1; /* No longer needed as much with column direction, but can help fill space */

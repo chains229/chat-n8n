@@ -2,7 +2,7 @@
 import { useState } from "react";
 import MessageList from "./MessageList";
 import ChatInput from './ChatInput';
-import useChatbot from '../hooks/useChatbot'; // Ensure this path is correct
+import useChatbot from '../hooks/useChatbot'; 
 
 function ChatContainer() {
     const [messages, setMessages] = useState([
